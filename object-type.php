@@ -44,7 +44,7 @@ echo "<br>";
 echo "Game :  " .$produk2->getLable();
 echo "<br>";
 
-// buat variabel baru untuk Instantiasi Class CetakInfoProduk.
+// buat $infoproduk1 variabel baru untuk Instantiasi Class CetakInfoProduk.
 $infoproduk1 = new CetakInfoProduk();
-// panggil variabel untuk menjalankan method cetak dengan memasukan parameter variabel dari object.
+// panggil $infoproduk1 variabel untuk menjalankan method cetak dengan memasukan parameter variabel dari object.
 echo $infoproduk1->cetak($produk1);
