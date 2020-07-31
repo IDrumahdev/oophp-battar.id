@@ -14,13 +14,13 @@ class Produk {
     //     return "Assalamu'alaikum";
     // }
 
-public function getLable(){
-    return "$this->penulis, $this->penerbit";
-    //fungsi $this untuk mengambil property yang ada di dalam class yang bersangkutan ketika di buat Instant.
-    // jika tidak ada $this maka akan error karena pada PHP Lingkup variable (scope variavel -- tata cara penulisan property sama dengan tata cara penulisan variable)
-    // menulis variable di dalam function artinya untuk variable di function tersebut saja, bukan mengambil dari luar, untuk mengambil
-    // isi dari property di dalam kelas harus menambahkan $this.
-}
+    public function getLable(){
+        return "$this->penulis, $this->penerbit";
+        //fungsi $this untuk mengambil property yang ada di dalam class yang bersangkutan ketika di buat Instant.
+        // jika tidak ada $this maka akan error karena pada PHP Lingkup variable (scope variavel -- tata cara penulisan property sama dengan tata cara penulisan variable)
+        // menulis variable di dalam function artinya untuk variable di function tersebut saja, bukan mengambil dari luar, untuk mengambil
+        // isi dari property di dalam kelas harus menambahkan $this.
+    }
 
 }
 // Instant dari $produk1
