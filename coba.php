@@ -1,14 +1,19 @@
 <?php
 
+//Class
 class Coba {
 
+    public $a; //property
 
+    public function b(){ //method
+
+    }
 
 }
 
-$a = New Coba();
-$b = New Coba();
-$c = New Coba();
+$a = New Coba(); //Objek
+$b = New Coba(); //Objek
+$c = New Coba(); //Objek
 
 var_dump($a);
 var_dump($b);
