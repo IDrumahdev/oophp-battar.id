@@ -25,7 +25,7 @@ class Contoh{
     public $angka = 1;
 
     public function halo() {
-        return "Halo " . $this->angka++. " Kalo.";
+        return "Halo " . $this->angka++. " Kali.";
     }
 }
 
@@ -55,7 +55,7 @@ class ContohBaru{
     public static $angkabaru = 1;
 
     public function halo() {
-        return "Halo " . self::$angkabaru++. " Kalo.";
+        return "Halo " . self::$angkabaru++. " Kali.";
     }
 }
 
