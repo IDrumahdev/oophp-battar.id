@@ -1,6 +1,6 @@
 <?php
 
-class Produk {
+abstract class Produk { // konsekuensi class Produk tidak bisa di instansiasi Object.
     private     $judul, // Ganti visibility dari Public ke Private.
                 $penulis,
                 $penerbit,
@@ -56,10 +56,17 @@ class Produk {
     }
     
 
-    public function getInfoProduk(){
+    abstract public function getInfoProduk();
+    // { //tidak bisa implementasi pada method abstract , hanya boleh ada interface nya saja.
+    //     $str = "{$this->judul} | {$this->getLable()} (Rp. {$this->harga})";
+    //     return $str;
+    // }
+
+    public function getInfo() {
         $str = "{$this->judul} | {$this->getLable()} (Rp. {$this->harga})";
         return $str;
     }
+
 
 
     // =====================================================Getter And Setter Penambahan dari Tutorial sebelumnya====================
@@ -80,8 +87,13 @@ class CetakInfoProduk {
         $this->daftarProduk[] = $produk;
     }
 
-    public function cetak(Produk $produk) {
-        $str = "{$produk->judul} | {$produk->getLable()} (Rp. {$produk->harga})";
+    public function cetak() {//function cetak mendapat data dari tambahProduk
+        $str = "Daftar Produk : <br>";
+
+        foreach ( $this->daftarProduk as $p) { // Looping mengambil daftar produk satu per satu.
+            $str .= "- {$p->getInfoProduk()} <br>"; // $p adalah object produk, bisa langsung saja mengambil method getInfoProduk() dari class child nya.
+        }
+
         return $str;
     }
 }
@@ -98,7 +110,7 @@ class Komik extends Produk {
     }
 
     public function getInfoProduk(){
-        $str = "Komik : ". parent::getInfoProduk() ." - {$this->jmlHalaman} Halaman.";
+        $str = "Komik : ". $this->getInfo() ." - {$this->jmlHalaman} Halaman."; // mengambil data dari method getInfo pada class Produk.
         return $str;
     }
 }
@@ -114,7 +126,7 @@ class Game extends Produk {
     }
 
     public function getInfoProduk(){
-        $str = "Game : ". parent::getInfoProduk() ." ~ {$this->waktuMain} Jam.";
+        $str = "Game : ". $this->getInfo() ." ~ {$this->waktuMain} Jam."; // mengambil data dari method getInfo pada class Produk.
         return $str;
     }
 
@@ -126,5 +138,13 @@ class Game extends Produk {
 
 
 // Instantiasi class Produk
+// $produk = new Produk(); //tidak dapat di instansiasi karena sudah di buat abstract.
+
+
 $produk1 = new Komik("Naruto","Masashi Kishimoto","Shonen Jump",30000,100);
 $produk2 = new Game("Uncharted","Neil Druckman","Sony Computer",250000,50);
+
+$cetakProduk = new CetakInfoProduk();
+$cetakProduk->tambahProduk( $produk1 );
+$cetakProduk->tambahProduk( $produk2 );
+echo $cetakProduk->cetak();
